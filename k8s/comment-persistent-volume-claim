@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: database-persistent-volume-claim
+spec:
+  # K8s should find instance of storage which supports the selected mode. Three types exist:
+  # ReadWriteOnce - can be used by a single node
+  # ReadOnlyMany - multiple nodes can read from this
+  # ReadWriteMany - can be read and written to by many nodes
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      # K8s should find statical or dynamical storage option with this amount of space
+      storage: 2Gi
